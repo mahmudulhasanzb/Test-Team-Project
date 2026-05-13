@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Plain HTML Navbar</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f5f5f5;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 30px;
+      background: white;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+      position: relative;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: bold;
+      text-decoration: none;
+      color: black;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 25px;
+      align-items: center;
+    }
+
+    .nav-links li {
+      position: relative;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: black;
+      padding: 8px 12px;
+      display: block;
+    }
+
+    .nav-links a:hover {
+      background: #f0f0f0;
+      border-radius: 6px;
+    }
+
+    /* Dropdown */
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 40px;
+      left: 0;
+      background: white;
+      min-width: 160px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .dropdown-menu a {
+      padding: 10px 15px;
+    }
+
+    .dropdown:hover .dropdown-menu {
+      display: block;
+    }
+
+    /* Button */
+    .btn {
+      padding: 10px 18px;
+      border: none;
+      background: black;
+      color: white;
+      border-radius: 6px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .btn:hover {
+      opacity: 0.9;
+    }
+
+    /* Mobile Menu Button */
+    .menu-btn {
+      display: none;
+      font-size: 24px;
+      cursor: pointer;
+      background: none;
+      border: none;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .menu-btn {
+        display: block;
+      }
+
+      .navbar-center {
+        display: none;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: white;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+      }
+
+      .navbar-center.active {
+        display: block;
+      }
+
+      .nav-links {
+        flex-direction: column;
+        padding: 20px;
+        gap: 10px;
+      }
+
+      .dropdown-menu {
+        position: static;
+        box-shadow: none;
+        margin-top: 8px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav class="navbar">
+
+    <!-- Left -->
+    <div class="navbar-start">
+      <a href="#" class="logo">daisyUI</a>
+    </div>
+
+    <!-- Mobile Menu Button -->
+    <button class="menu-btn" onclick="toggleMenu()">
+      ☰
+    </button>
+
+    <!-- Center -->
+    <div class="navbar-center" id="mobileMenu">
+      <ul class="nav-links">
+
+        <li><a href="#">Item 1</a></li>
+
+        <li class="dropdown">
+          <a href="#">Parent ▼</a>
+
+          <ul class="dropdown-menu">
+            <li><a href="#">Submenu 1</a></li>
+            <li><a href="#">Submenu 2</a></li>
+          </ul>
+        </li>
+
+        <li><a href="#">Item 3</a></li>
+
+      </ul>
+    </div>
+
+    <!-- Right -->
+    <div class="navbar-end">
+      <a href="#" class="btn">Button</a>
+    </div>
+
+  </nav>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById("mobileMenu").classList.toggle("active");
+    }
+  </script>
+
+</body>
+
+</html>
